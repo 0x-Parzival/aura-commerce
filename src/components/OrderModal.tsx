@@ -308,7 +308,7 @@ const OrderModal = ({ isOpen, onClose, items }: OrderModalProps) => {
                                 value={formData.name}
                                 onChange={handleInputChange}
                                 placeholder="Enter your full name"
-                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all"
+                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all text-gray-900"
                                 required
                             />
                         </div>
@@ -326,7 +326,7 @@ const OrderModal = ({ isOpen, onClose, items }: OrderModalProps) => {
                                 onChange={handleInputChange}
                                 placeholder="+91 98739 61111"
                                 pattern="[0-9+\s-]+"
-                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all"
+                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all text-gray-900"
                                 required
                             />
                         </div>
@@ -343,7 +343,7 @@ const OrderModal = ({ isOpen, onClose, items }: OrderModalProps) => {
                                 value={formData.building}
                                 onChange={handleInputChange}
                                 placeholder="e.g., Sunshine Apartments, House No. 123"
-                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all"
+                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all text-gray-900"
                                 required
                             />
                         </div>
@@ -359,7 +359,7 @@ const OrderModal = ({ isOpen, onClose, items }: OrderModalProps) => {
                                 value={formData.tower}
                                 onChange={handleInputChange}
                                 placeholder="e.g., Tower A, Floor 5, Flat 501"
-                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all"
+                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all text-gray-900"
                             />
                         </div>
 
@@ -374,7 +374,7 @@ const OrderModal = ({ isOpen, onClose, items }: OrderModalProps) => {
                                 value={formData.landmark}
                                 onChange={handleInputChange}
                                 placeholder="e.g., Near City Mall, Behind ABC School"
-                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all"
+                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all text-gray-900"
                             />
                         </div>
 
@@ -401,7 +401,7 @@ const OrderModal = ({ isOpen, onClose, items }: OrderModalProps) => {
                                         value={formData.manualArea}
                                         onChange={handleInputChange}
                                         placeholder="e.g., Sector 62"
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all"
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all text-gray-900"
                                     />
                                 </div>
 
@@ -415,7 +415,7 @@ const OrderModal = ({ isOpen, onClose, items }: OrderModalProps) => {
                                         value={formData.manualCity}
                                         onChange={handleInputChange}
                                         placeholder="e.g., Noida"
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all"
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all text-gray-900"
                                         required={!locationData}
                                     />
                                 </div>
@@ -430,7 +430,7 @@ const OrderModal = ({ isOpen, onClose, items }: OrderModalProps) => {
                                         value={formData.manualState}
                                         onChange={handleInputChange}
                                         placeholder="e.g., Uttar Pradesh"
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all"
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all text-gray-900"
                                         required={!locationData}
                                     />
                                 </div>
@@ -446,7 +446,7 @@ const OrderModal = ({ isOpen, onClose, items }: OrderModalProps) => {
                                         onChange={handleInputChange}
                                         placeholder="e.g., 201301"
                                         pattern="[0-9]{6}"
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all"
+                                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all text-gray-900"
                                         required={!locationData}
                                     />
                                 </div>
