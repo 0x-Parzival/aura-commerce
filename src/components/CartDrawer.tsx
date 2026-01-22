@@ -88,14 +88,14 @@ const CartDrawer = ({ isOpen, onClose }: CartDrawerProps) => {
                                         <div className="flex items-center gap-2">
                                             <button
                                                 onClick={() => updateQuantity(item.productId, item.quantity - 1)}
-                                                className="p-1 bg-white border border-gray-300 rounded hover:bg-gray-100"
+                                                className="p-1.5 bg-red-500 hover:bg-red-600 text-white rounded-md shadow-sm transition-all active:scale-90"
                                             >
                                                 <Minus className="w-4 h-4" />
                                             </button>
-                                            <span className="w-8 text-center font-bold">{item.quantity}</span>
+                                            <span className="w-8 text-center font-black text-gray-900">{item.quantity}</span>
                                             <button
                                                 onClick={() => updateQuantity(item.productId, item.quantity + 1)}
-                                                className="p-1 bg-white border border-gray-300 rounded hover:bg-gray-100"
+                                                className="p-1.5 bg-green-600 hover:bg-green-700 text-white rounded-md shadow-sm transition-all active:scale-90"
                                             >
                                                 <Plus className="w-4 h-4" />
                                             </button>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { products } from '../data/products';
-import { ChevronRight, Star, ShoppingBag, Truck, Shield, Award, Plus, Minus, ShoppingCart } from 'lucide-react';
+import { ChevronRight, Star, ShoppingBag, Truck, Shield, Award, Plus, Minus, ShoppingCart, ArrowLeft } from 'lucide-react';
 import { cn } from "@/lib/utils";
 import OrderModal from '../components/OrderModal';
 import { useCart } from '../context/CartContext';
@@ -44,6 +44,9 @@ const ProductDetail = () => {
             {/* Navigation Breadcrumb */}
             <nav className="bg-white border-b border-gray-100 sticky top-0 z-20 backdrop-blur-sm bg-white/95">
                 <div className="container mx-auto px-4 py-3 md:py-4 flex items-center gap-2 text-xs md:text-sm text-gray-500">
+                    <Link to="/makhana" className="p-2 -ml-2 hover:bg-gray-100 rounded-full transition-colors text-gray-900" aria-label="Go back">
+                        <ArrowLeft className="w-5 h-5" />
+                    </Link>
                     <Link to="/" className="hover:text-orange-600 transition-colors">Home</Link>
                     <ChevronRight className="w-3 h-3 md:w-4 md:h-4" />
                     <Link to="/makhana" className="hover:text-orange-600 transition-colors">Makhana</Link>
@@ -170,19 +173,19 @@ const ProductDetail = () => {
 
                                     <div className="flex flex-col gap-1">
                                         <span className="text-xs md:text-sm text-gray-600 font-medium">Quantity</span>
-                                        <div className="flex items-center gap-4 bg-white px-3 py-2 rounded-xl border border-gray-200">
+                                        <div className="flex items-center gap-4 bg-gray-100 px-3 py-2 rounded-xl border border-gray-200">
                                             <button
                                                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                                                className="p-1 hover:bg-gray-100 rounded transition-colors"
+                                                className="p-1.5 bg-orange-500 hover:bg-orange-600 text-white rounded-lg shadow-sm transition-all active:scale-90"
                                             >
-                                                <Minus className="w-5 h-5 text-gray-600" />
+                                                <Minus className="w-5 h-5 font-bold" />
                                             </button>
-                                            <span className="text-lg font-bold w-6 text-center">{quantity}</span>
+                                            <span className="text-xl font-black w-8 text-center text-gray-900">{quantity}</span>
                                             <button
                                                 onClick={() => setQuantity(quantity + 1)}
-                                                className="p-1 hover:bg-gray-100 rounded transition-colors"
+                                                className="p-1.5 bg-orange-500 hover:bg-orange-600 text-white rounded-lg shadow-sm transition-all active:scale-90"
                                             >
-                                                <Plus className="w-5 h-5 text-gray-600" />
+                                                <Plus className="w-5 h-5 font-bold" />
                                             </button>
                                         </div>
                                     </div>

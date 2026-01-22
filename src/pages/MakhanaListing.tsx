@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Leaf, ShieldCheck, Heart, ShoppingBag, Star, ShoppingCart } from 'lucide-react';
+import { ArrowRight, Leaf, ShieldCheck, Heart, ShoppingBag, Star, ShoppingCart, ArrowLeft } from 'lucide-react';
 import { products } from '../data/products';
 import { cn } from "@/lib/utils";
 import { useCart } from '../context/CartContext';
@@ -33,10 +33,15 @@ const MakhanaListing = () => {
             {/* Navigation */}
             <nav className="relative z-20 bg-white/80 backdrop-blur-md border-b border-gray-100 sticky top-0">
                 <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-                    <Link to="/" className="flex items-center gap-2 group">
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-green-600 flex items-center justify-center text-white font-bold group-hover:rotate-12 transition-transform">G</div>
-                        <span className="font-bold text-xl tracking-tight">Genus <span className="text-green-700">Agro</span></span>
-                    </Link>
+                    <div className="flex items-center gap-4">
+                        <Link to="/" className="p-2 -ml-2 hover:bg-gray-100 rounded-full transition-colors text-gray-900" aria-label="Go back">
+                            <ArrowLeft className="w-5 h-5" />
+                        </Link>
+                        <Link to="/" className="flex items-center gap-2 group">
+                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-green-600 flex items-center justify-center text-white font-bold group-hover:rotate-12 transition-transform">G</div>
+                            <span className="font-bold text-xl tracking-tight">Genus <span className="text-green-700">Agro</span></span>
+                        </Link>
+                    </div>
                     <div className="flex items-center gap-3 md:gap-6">
                         <button
                             onClick={() => setIsCartOpen(true)}
