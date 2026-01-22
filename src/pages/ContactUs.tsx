@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, Facebook, Instagram, Linkedin, Twitter, MapPin, Phone, Mail, Globe, Heart, Building2 } from 'lucide-react';
+import { ChevronRight, Facebook, Instagram, Linkedin, Twitter, MapPin, Phone, Mail, Globe, Heart, Building2, ArrowLeft } from 'lucide-react';
 import { cn } from "@/lib/utils";
 
 const ContactUs = () => {
@@ -77,6 +77,9 @@ ${formData.message}`
 
             {/* Navigation Breadcrumb */}
             <nav className="relative z-10 container mx-auto px-4 py-6 flex items-center gap-2 text-sm text-gray-600">
+                <Link to="/" className="p-2 -ml-2 hover:bg-white/50 rounded-full transition-colors text-gray-900" aria-label="Go back">
+                    <ArrowLeft className="w-5 h-5" />
+                </Link>
                 <Link to="/" className="hover:text-orange-600 font-medium">Home</Link>
                 <ChevronRight className="w-4 h-4" />
                 <span className="text-gray-900 font-bold">Contact Us</span>
