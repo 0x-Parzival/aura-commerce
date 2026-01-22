@@ -14,8 +14,6 @@ import { ShoppingCart } from "lucide-react";
 const queryClient = new QueryClient();
 
 const Home = () => {
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const { totalItems } = useCart();
   return (
     <div className="relative w-full h-screen overflow-hidden bg-gray-100 font-sans text-gray-900">
       {/* Background Image - Makhana Field */}
@@ -90,9 +88,6 @@ const Home = () => {
           />
         </main>
       </div>
-
-      {/* Cart Drawer */}
-      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </div>
   );
 };
@@ -103,6 +98,7 @@ const App = () => (
       <Toaster />
       <CartProvider>
         <BrowserRouter>
+          <GlobalCartDrawer />
           <Routes>
             <Route path="/" element={<Home />} />
             {/* Legacy Product Page for PDF extraction specific request, kept for reference if needed, but linking to new listing */}
@@ -115,5 +111,10 @@ const App = () => (
     </TooltipProvider>
   </QueryClientProvider>
 );
+
+const GlobalCartDrawer = () => {
+  const { isCartOpen, setIsCartOpen } = useCart();
+  return <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />;
+};
 
 export default App;

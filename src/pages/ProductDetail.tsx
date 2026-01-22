@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { products } from '../data/products';
-import { ChevronRight, Star, ShoppingBag, Truck, Shield, Award, Plus, Minus } from 'lucide-react';
+import { ChevronRight, Star, ShoppingBag, Truck, Shield, Award, Plus, Minus, ShoppingCart } from 'lucide-react';
 import { cn } from "@/lib/utils";
 import OrderModal from '../components/OrderModal';
 import { useCart } from '../context/CartContext';
@@ -15,7 +15,7 @@ const ProductDetail = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
     const [quantity, setQuantity] = useState(1);
-    const { addToCart } = useCart();
+    const { addToCart, setIsCartOpen, totalItems } = useCart();
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -48,7 +48,18 @@ const ProductDetail = () => {
                     <ChevronRight className="w-3 h-3 md:w-4 md:h-4" />
                     <Link to="/makhana" className="hover:text-orange-600 transition-colors">Makhana</Link>
                     <ChevronRight className="w-3 h-3 md:w-4 md:h-4" />
-                    <span className="text-gray-900 font-medium truncate">{product.title}</span>
+                    <div className="flex-1 truncate">{product.title}</div>
+                    <button
+                        onClick={() => setIsCartOpen(true)}
+                        className="relative p-2 text-gray-600 hover:text-orange-600 transition-colors"
+                    >
+                        <ShoppingCart className="w-5 h-5" />
+                        {totalItems > 0 && (
+                            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                                {totalItems}
+                            </span>
+                        )}
+                    </button>
                 </div>
             </nav>
 

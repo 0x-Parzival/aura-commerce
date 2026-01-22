@@ -17,6 +17,8 @@ interface CartContextType {
     clearCart: () => void;
     totalItems: number;
     getCartTotal: () => string;
+    isCartOpen: boolean;
+    setIsCartOpen: (isOpen: boolean) => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -27,6 +29,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         const saved = localStorage.getItem('genus-cart');
         return saved ? JSON.parse(saved) : [];
     });
+    const [isCartOpen, setIsCartOpen] = useState(false);
 
     // Save to localStorage whenever cart changes
     useEffect(() => {
@@ -94,7 +97,9 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 removeFromCart,
                 clearCart,
                 totalItems,
-                getCartTotal
+                getCartTotal,
+                isCartOpen,
+                setIsCartOpen
             }}
         >
             {children}

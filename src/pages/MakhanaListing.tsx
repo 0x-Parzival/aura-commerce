@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Leaf, ShieldCheck, Heart, ShoppingBag, Star } from 'lucide-react';
+import { ArrowRight, Leaf, ShieldCheck, Heart, ShoppingBag, Star, ShoppingCart } from 'lucide-react';
 import { products } from '../data/products';
 import { cn } from "@/lib/utils";
 import { useCart } from '../context/CartContext';
 import { toast } from "sonner";
 
 const MakhanaListing = () => {
-    const { addToCart } = useCart();
+    const { addToCart, setIsCartOpen, totalItems } = useCart();
 
     const handleAddToCart = (e: React.MouseEvent, product: any) => {
         e.preventDefault();
@@ -37,9 +37,22 @@ const MakhanaListing = () => {
                         <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-green-600 flex items-center justify-center text-white font-bold group-hover:rotate-12 transition-transform">G</div>
                         <span className="font-bold text-xl tracking-tight">Genus <span className="text-green-700">Agro</span></span>
                     </Link>
-                    <div className="flex items-center gap-6 text-sm font-medium text-gray-600">
-                        <Link to="/" className="hover:text-orange-600 transition-colors">Home</Link>
-                        <Link to="/contact" className="hover:text-orange-600 transition-colors">Contact</Link>
+                    <div className="flex items-center gap-3 md:gap-6">
+                        <button
+                            onClick={() => setIsCartOpen(true)}
+                            className="relative p-2 text-gray-600 hover:text-orange-600 transition-colors"
+                        >
+                            <ShoppingCart className="w-5 h-5 md:w-6 h-6" />
+                            {totalItems > 0 && (
+                                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                                    {totalItems}
+                                </span>
+                            )}
+                        </button>
+                        <div className="hidden sm:flex items-center gap-6 text-sm font-medium text-gray-600">
+                            <Link to="/" className="hover:text-orange-600 transition-colors">Home</Link>
+                            <Link to="/contact" className="hover:text-orange-600 transition-colors">Contact</Link>
+                        </div>
                     </div>
                 </div>
             </nav>

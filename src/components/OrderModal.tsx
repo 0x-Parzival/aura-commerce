@@ -97,14 +97,26 @@ const OrderModal = ({ isOpen, onClose, items }: OrderModalProps) => {
                         address.postcode
                     ].filter(Boolean);
 
-                    setLocationData({
+                    const locData = {
                         city: address.city || address.town || address.village || address.county || '',
                         state: address.state || '',
                         pincode: address.postcode || '',
                         area: address.suburb || address.neighbourhood || address.road || address.street || '',
                         country: address.country || 'India',
                         fullAddress: addressParts.join(', ')
-                    });
+                    };
+
+                    setLocationData(locData);
+
+                    // Auto-fill manual fields
+                    setFormData(prev => ({
+                        ...prev,
+                        manualCity: locData.city,
+                        manualState: locData.state,
+                        manualPincode: locData.pincode,
+                        manualArea: locData.area
+                    }));
+
                     setLoading(false);
                 } catch (error) {
                     console.error('Reverse geocoding failed:', error);
