@@ -198,4 +198,24 @@
   .text-balance {
     text-wrap: balance;
   }
+  
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .translate-z-10 {
+    transform: translateZ(20px);
+  }
+  
+  .translate-z-20 {
+    transform: translateZ(30px);
+  }
+  
+  .translate-z-30 {
+    transform: translateZ(40px);
+  }
 }

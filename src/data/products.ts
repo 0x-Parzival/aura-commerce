@@ -1,214 +1,108 @@
-import { Product, ProductCategory } from '@/types/backend';
+export interface Product {
+  id: string;
+  title: string;
+  subtitle: string;
+  grade: string;
+  image: string;
+  description: string;
+  price: string;
+  features: string[];
+  nutritionalInfo: { label: string; value: string }[];
+  packaging: string[];
+  bannerImage: string;
+  secondaryImage?: string;
+}
 
-// Makhana product images - using hero images as placeholders
-import heroMakhana from '@/assets/hero-makhana.jpg';
-import heroTea from '@/assets/hero-tea.jpg';
-
-export const makhanaProducts: Product[] = [
+export const products: Product[] = [
   {
-    id: 'makhana-aa',
-    sku: 'MKH-AA-001',
-    name: 'AA Grade Makhana',
-    description: 'Premium large-size fox nuts, perfect for snacking. The finest quality with uniform shape and superior taste.',
-    category: 'makhana',
-    grade: 'AA Grade (Premium)',
-    images: [heroMakhana],
-    basePrice: 599,
-    currency: 'INR',
-    variants: [
-      { id: 'makhana-aa-250', productId: 'makhana-aa', name: '250g Pack', weight: '250g', price: 599, sku: 'MKH-AA-250', inStock: true },
-      { id: 'makhana-aa-500', productId: 'makhana-aa', name: '500g Pack', weight: '500g', price: 1099, sku: 'MKH-AA-500', inStock: true },
-      { id: 'makhana-aa-1000', productId: 'makhana-aa', name: '1kg Pack', weight: '1kg', price: 1999, sku: 'MKH-AA-1000', inStock: true },
+    id: "aa-grade",
+    title: "Premium AA Grade Makhana",
+    subtitle: "The Royal Harvest",
+    grade: "5A+ Size (22mm+)",
+    image: "/assets/products/makhana-aa-real.jpg",
+    description: "Experience the ultimate crunch with our hand-picked AA Grade Makhana. These extra-large, snow-white fox nuts are the pinnacle of quality, sourced from the finest crops in Madhubani. Perfectly round and bursting with nutrition, they are the ideal guilt-free luxury snack.",
+    price: "₹600 / kg",
+    features: ["Largest 5A+ Size", "99% Popping Ratio", "Farm Fresh", "Pesticide Free"],
+    nutritionalInfo: [
+      { label: "Protein", value: "9.7g" },
+      { label: "Fiber", value: "14.5g" },
+      { label: "Calories", value: "347 kcal" },
+      { label: "Fat", value: "0.1g" },
     ],
-    inStock: true,
-    isActive: true,
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    packaging: ["250g Zip Lock", "500g Jar", "1kg Premium Box"],
+    bannerImage: "/assets/makhana-harvest-bg.png"
   },
   {
-    id: 'makhana-a',
-    sku: 'MKH-A-001',
-    name: 'A Grade Makhana',
-    description: 'Medium-sized versatile fox nuts ideal for cooking and snacking. Great quality at affordable price.',
-    category: 'makhana',
-    grade: 'A Grade (Medium)',
-    images: [heroMakhana],
-    basePrice: 449,
-    currency: 'INR',
-    variants: [
-      { id: 'makhana-a-250', productId: 'makhana-a', name: '250g Pack', weight: '250g', price: 449, sku: 'MKH-A-250', inStock: true },
-      { id: 'makhana-a-500', productId: 'makhana-a', name: '500g Pack', weight: '500g', price: 849, sku: 'MKH-A-500', inStock: true },
-      { id: 'makhana-a-1000', productId: 'makhana-a', name: '1kg Pack', weight: '1kg', price: 1599, sku: 'MKH-A-1000', inStock: true },
+    id: "a-grade",
+    title: "Standard A Grade Makhana",
+    subtitle: "Everyday Wellness",
+    grade: "4A Size (19mm+)",
+    image: "/assets/products/makhana-a.jpg",
+    secondaryImage: "/assets/products/makhana-a-back.jpg",
+    description: "Our Standard A Grade Makhana offers the perfect balance of quality and value. Crisp, light, and naturally delicious, these fox nuts are perfect for daily snacking, roasting, or adding to curries. Sourced from authentic Bihar wetlands.",
+    price: "₹500 / kg",
+    features: ["Uniform Size", "High Quality", "Natural Taste", "Rich in Calcium"],
+    nutritionalInfo: [
+      { label: "Protein", value: "9.7g" },
+      { label: "Fiber", value: "14.5g" },
+      { label: "Calories", value: "347 kcal" },
+      { label: "Fat", value: "0.1g" },
     ],
-    inStock: true,
-    isActive: true,
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    packaging: ["500g Pouch", "1kg Pack"],
+    bannerImage: "/assets/makhana-harvest-bg.png"
   },
   {
-    id: 'makhana-standard',
-    sku: 'MKH-STD-001',
-    name: 'Standard Grade Makhana',
-    description: 'Small-sized cost-effective makhana, perfect for bulk cooking and recipes.',
-    category: 'makhana',
-    grade: 'Standard Grade',
-    images: [heroMakhana],
-    basePrice: 349,
-    currency: 'INR',
-    variants: [
-      { id: 'makhana-std-500', productId: 'makhana-standard', name: '500g Pack', weight: '500g', price: 349, sku: 'MKH-STD-500', inStock: true },
-      { id: 'makhana-std-1000', productId: 'makhana-standard', name: '1kg Pack', weight: '1kg', price: 649, sku: 'MKH-STD-1000', inStock: true },
+    id: "mini-grade",
+    title: "Mini Grade Makhana",
+    subtitle: "Smart Snacking",
+    grade: "3A Size",
+    image: "/assets/products/makhana-mini-real.jpg",
+    description: "Don't let the size fool you. Our Mini Grade Makhana packs the same nutritional punch in a bite-sized form. Perfect for trail mixes, kids' lunchboxes, or roasting with your favorite spices. Economical without compromising on health.",
+    price: "₹400 / kg",
+    features: ["Bite Sized", "Budget Friendly", "Same Nutrition", "Best for Roasting"],
+    nutritionalInfo: [
+      { label: "Protein", value: "9.7g" },
+      { label: "Fiber", value: "14.5g" },
+      { label: "Calories", value: "347 kcal" },
+      { label: "Fat", value: "0.1g" },
     ],
-    inStock: true,
-    isActive: true,
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    packaging: ["1kg Bulk Pouch", "5kg Sack"],
+    bannerImage: "/assets/makhana-harvest-bg.png"
   },
   {
-    id: 'makhana-mini',
-    sku: 'MKH-MINI-001',
-    name: 'Mini Grade Makhana',
-    description: 'Tiny makhana perfect for recipes, raita, and bulk commercial use.',
-    category: 'makhana',
-    grade: 'Mini Grade',
-    images: [heroMakhana],
-    basePrice: 299,
-    currency: 'INR',
-    variants: [
-      { id: 'makhana-mini-500', productId: 'makhana-mini', name: '500g Pack', weight: '500g', price: 299, sku: 'MKH-MINI-500', inStock: true },
-      { id: 'makhana-mini-1000', productId: 'makhana-mini', name: '1kg Pack', weight: '1kg', price: 549, sku: 'MKH-MINI-1000', inStock: true },
+    id: "combo-pack",
+    title: "Family Clarity Combo",
+    subtitle: "Best of Both Worlds",
+    grade: "AA + A Grade Mix",
+    image: "/assets/products/makhana-combo-real.jpg",
+    description: "Can't decide? Get the best of both worlds with our Family Clarity Combo. Enjoy the luxury of 5A+ AA Grade for special occasions and the versatility of 4A Standard Grade for daily use. A complete health package for the entire family.",
+    price: "₹1,100",
+    features: ["1kg AA Grade", "1kg A Grade", "Super Saver", "Complete Nutrition"],
+    nutritionalInfo: [
+      { label: "Protein", value: "9.7g" },
+      { label: "Fiber", value: "14.5g" },
+      { label: "Calories", value: "347 kcal" },
+      { label: "Fat", value: "0.1g" },
     ],
-    inStock: true,
-    isActive: true,
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    packaging: ["2kg Combo Box"],
+    bannerImage: "/assets/makhana-harvest-bg.png"
   },
   {
-    id: 'makhana-brown',
-    sku: 'MKH-BRN-001',
-    name: 'Brown Quality Makhana',
-    description: 'Unpolished brown makhana with natural color, ideal for roasting and traditional recipes.',
-    category: 'makhana',
-    grade: 'Brown Quality',
-    images: [heroMakhana],
-    basePrice: 399,
-    currency: 'INR',
-    variants: [
-      { id: 'makhana-brn-500', productId: 'makhana-brown', name: '500g Pack', weight: '500g', price: 399, sku: 'MKH-BRN-500', inStock: true },
-      { id: 'makhana-brn-1000', productId: 'makhana-brown', name: '1kg Pack', weight: '1kg', price: 749, sku: 'MKH-BRN-1000', inStock: true },
+    id: "bulk-wholesale",
+    title: "Commercial Bulk Pack",
+    subtitle: "Business Ready",
+    grade: "Mixed / Graded",
+    image: "/assets/products/makhana-bulk.jpg",
+    description: "Sourcing for your bakery, restaurant, or retail brand? Our Commercial Bulk Packs offer premium quality makhana in large quantities at wholesale rates. Direct from the farm to your business, ensuring maximum freshness and profit margins.",
+    price: "Enquire for Price",
+    features: ["Wholesale Rates", "Consistent Supply", "Custom Grading", "Export Quality"],
+    nutritionalInfo: [
+      { label: "Protein", value: "9.7g" },
+      { label: "Fiber", value: "14.5g" },
+      { label: "Calories", value: "347 kcal" },
+      { label: "Fat", value: "0.1g" },
     ],
-    inStock: true,
-    isActive: true,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: 'makhana-broken',
-    sku: 'MKH-BRK-001',
-    name: 'Broken Quality Makhana',
-    description: 'Economical broken makhana pieces for cooking, processing, and commercial food preparation.',
-    category: 'makhana',
-    grade: 'Broken Quality',
-    images: [heroMakhana],
-    basePrice: 199,
-    currency: 'INR',
-    variants: [
-      { id: 'makhana-brk-500', productId: 'makhana-broken', name: '500g Pack', weight: '500g', price: 199, sku: 'MKH-BRK-500', inStock: true },
-      { id: 'makhana-brk-1000', productId: 'makhana-broken', name: '1kg Pack', weight: '1kg', price: 349, sku: 'MKH-BRK-1000', inStock: true },
-    ],
-    inStock: true,
-    isActive: true,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-];
-
-export const teaProducts: Product[] = [
-  {
-    id: 'tea-gold',
-    sku: 'TEA-GLD-001',
-    name: 'Premium Gold Tea',
-    description: 'Exquisite golden tips from the finest tea gardens. Rich aroma with smooth finish.',
-    category: 'tea',
-    images: [heroTea],
-    basePrice: 499,
-    currency: 'INR',
-    variants: [
-      { id: 'tea-gold-100', productId: 'tea-gold', name: '100g Pack', weight: '100g', price: 499, sku: 'TEA-GLD-100', inStock: true },
-      { id: 'tea-gold-250', productId: 'tea-gold', name: '250g Pack', weight: '250g', price: 1149, sku: 'TEA-GLD-250', inStock: true },
-      { id: 'tea-gold-500', productId: 'tea-gold', name: '500g Pack', weight: '500g', price: 2099, sku: 'TEA-GLD-500', inStock: true },
-    ],
-    inStock: true,
-    isActive: true,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: 'tea-elaichi',
-    sku: 'TEA-ELC-001',
-    name: 'Elaichi Tea',
-    description: 'Aromatic cardamom-infused tea blend. The perfect traditional chai experience.',
-    category: 'tea',
-    images: [heroTea],
-    basePrice: 399,
-    currency: 'INR',
-    variants: [
-      { id: 'tea-elc-100', productId: 'tea-elaichi', name: '100g Pack', weight: '100g', price: 399, sku: 'TEA-ELC-100', inStock: true },
-      { id: 'tea-elc-250', productId: 'tea-elaichi', name: '250g Pack', weight: '250g', price: 899, sku: 'TEA-ELC-250', inStock: true },
-      { id: 'tea-elc-500', productId: 'tea-elaichi', name: '500g Pack', weight: '500g', price: 1699, sku: 'TEA-ELC-500', inStock: true },
-    ],
-    inStock: true,
-    isActive: true,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-  {
-    id: 'tea-masala',
-    sku: 'TEA-MSL-001',
-    name: 'Masala Chai Blend',
-    description: 'Traditional spiced tea with ginger, cinnamon, and cloves. Coming Soon!',
-    category: 'tea',
-    images: [heroTea],
-    basePrice: 449,
-    currency: 'INR',
-    variants: [
-      { id: 'tea-msl-100', productId: 'tea-masala', name: '100g Pack', weight: '100g', price: 449, sku: 'TEA-MSL-100', inStock: false },
-    ],
-    inStock: false,
-    isActive: false,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-];
-
-export const categories: { id: ProductCategory; name: string; description: string; available: boolean }[] = [
-  {
-    id: 'makhana',
-    name: 'Makhana',
-    description: 'Premium Fox Nuts from Bihar',
-    available: true,
-  },
-  {
-    id: 'tea',
-    name: 'Tea',
-    description: 'Aromatic Tea Blends',
-    available: true,
-  },
-  {
-    id: 'jaggery',
-    name: 'Gud & Sakar',
-    description: 'Traditional Sweeteners',
-    available: false,
-  },
-];
-
-export const getProductsByCategory = (category: ProductCategory): Product[] => {
-  switch (category) {
-    case 'makhana':
-      return makhanaProducts;
-    case 'tea':
-      return teaProducts;
-    default:
-      return [];
+    packaging: ["10kg Sack", "20kg Sack", "50kg Sack"],
+    bannerImage: "/assets/makhana-harvest-bg.png"
   }
-};
+];
