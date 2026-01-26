@@ -9,16 +9,16 @@ const MakhanaPage = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
-      
+
       {/* Hero Banner */}
       <section className="relative h-[40vh] min-h-[300px] mt-16">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${heroMakhana})` }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
         </div>
-        
+
         <div className="relative z-10 container mx-auto px-4 h-full flex items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -30,7 +30,7 @@ const MakhanaPage = () => {
               Makhana
             </h1>
             <p className="text-muted-foreground text-lg max-w-xl">
-              Fox Nuts from the fertile lands of Bihar. Rich in protein, fiber, and antioxidants. 
+              Fox Nuts from the fertile lands of Bihar. Rich in protein, fiber, and antioxidants.
               A superfood loved worldwide.
             </p>
           </motion.div>
@@ -43,24 +43,64 @@ const MakhanaPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-8"
+          className="mb-12"
         >
           <h2 className="font-display text-2xl md:text-3xl font-semibold">
             Our Makhana Collection
           </h2>
           <p className="text-muted-foreground mt-2">
-            Choose from 6 premium grades, each perfect for different uses
+            Explore our diverse range of premium Fox Nuts, from retail favorites to wholesale grades.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {makhanaProducts.map((product, index) => (
-            <ProductCard 
-              key={product.id} 
-              product={product} 
-              delay={index * 0.1}
-            />
-          ))}
+        {/* Retail Section */}
+        <div className="mb-16">
+          <h3 className="text-xl font-bold mb-6 text-primary border-l-4 border-primary pl-4">Retail Green Packets</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {makhanaProducts.filter(p => p.id.startsWith('green-')).map((product, index) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                delay={index * 0.1}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Loose Makhana Section */}
+        <div className="mb-16">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
+            <div>
+              <h3 className="text-xl font-bold text-primary border-l-4 border-primary pl-4">Loose Makhana (Wholesale)</h3>
+              <p className="text-sm text-muted-foreground mt-1 ml-5">Premium grades available for bulk and wholesale purchases</p>
+            </div>
+            <div className="bg-primary/10 text-primary px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+              Wholesale Pricing per kg
+            </div>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {makhanaProducts.filter(p => p.id.startsWith('loose-')).map((product, index) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                delay={index * 0.1}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Commercial Section */}
+        <div className="mb-8">
+          <h3 className="text-xl font-bold mb-6 text-primary border-l-4 border-primary pl-4">Branded Packet Makhana</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {makhanaProducts.filter(p => p.id.startsWith('packet-')).map((product, index) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                delay={index * 0.1}
+              />
+            ))}
+          </div>
         </div>
       </section>
 

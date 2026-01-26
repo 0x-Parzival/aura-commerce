@@ -172,7 +172,14 @@ const ProductDetail = () => {
                                     </div>
 
                                     <div className="flex flex-col gap-1">
-                                        <span className="text-xs md:text-sm text-gray-600 font-medium">Quantity</span>
+                                        <div className="flex justify-between items-center">
+                                            <span className="text-xs md:text-sm text-gray-600 font-medium">Quantity</span>
+                                            <span className="text-xs font-bold text-green-700 bg-green-50 px-2 py-0.5 rounded">
+                                                Total: {product.weightInGrams * quantity >= 1000
+                                                    ? `${(product.weightInGrams * quantity / 1000).toFixed(1)} kg`
+                                                    : `${product.weightInGrams * quantity} g`}
+                                            </span>
+                                        </div>
                                         <div className="flex items-center gap-4 bg-gray-100 px-3 py-2 rounded-xl border border-gray-200">
                                             <button
                                                 onClick={() => setQuantity(Math.max(1, quantity - 1))}

@@ -93,69 +93,107 @@ const MakhanaListing = () => {
 
             {/* Product Grid */}
             <main className="relative z-10 container mx-auto px-4 pb-32">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-                    {products.map((product) => (
-                        <div key={product.id} className="group relative">
-                            <Link to={`/product/${product.id}`} className="block h-full">
-                                <div className="bg-white rounded-[2.5rem] border border-gray-100 p-6 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(234,88,12,0.15)] flex flex-col h-full bg-gradient-to-b from-white to-orange-50/20">
-                                    {/* Image Container */}
-                                    <div className="relative aspect-square rounded-[2rem] overflow-hidden mb-8 bg-gray-50 group-hover:bg-white transition-colors duration-500 shadow-inner">
-                                        <img
-                                            src={product.image}
-                                            alt={product.title}
-                                            className="w-full h-full object-contain p-8 transition-transform duration-700 group-hover:scale-110"
-                                        />
-                                        <div className="absolute top-4 left-4 flex flex-col gap-2">
-                                            <div className="bg-white/90 backdrop-blur-md text-orange-600 text-[10px] font-black px-3 py-1.5 rounded-full shadow-sm border border-orange-100 flex items-center gap-1">
-                                                <Star className="w-3 h-3 fill-current" />
-                                                BEST SELLER
-                                            </div>
-                                        </div>
-                                        <div className="absolute top-4 right-4 animate-bounce-slow">
-                                            <div className="bg-green-600 text-white text-[10px] font-black px-3 py-1.5 rounded-full shadow-lg">
-                                                {product.grade}
-                                            </div>
-                                        </div>
-                                    </div>
+                {/* Retail Section */}
+                <div className="mb-20">
+                    <div className="flex flex-col items-center mb-10">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-2">Retail Green Packets</h2>
+                        <div className="h-1.5 w-20 bg-orange-500 rounded-full"></div>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                        {products.filter(p => p.id.startsWith('green-')).map((product) => (
+                            <ProductCardItem key={product.id} product={product} handleAddToCart={handleAddToCart} />
+                        ))}
+                    </div>
+                </div>
 
-                                    {/* Content */}
-                                    <div className="flex-grow">
-                                        <div className="text-orange-600 text-[10px] font-black uppercase tracking-widest mb-2 px-1">
-                                            {product.subtitle}
-                                        </div>
-                                        <h3 className="text-2xl font-bold text-gray-900 leading-tight mb-3 px-1 group-hover:text-orange-600 transition-colors">
-                                            {product.title}
-                                        </h3>
-                                        <p className="text-gray-500 text-sm leading-relaxed mb-8 px-1">
-                                            {product.description}
-                                        </p>
-                                    </div>
+                {/* Loose Section */}
+                <div className="mb-20">
+                    <div className="flex flex-col items-center mb-10">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-2">Loose Makhana (Wholesale)</h2>
+                        <p className="text-gray-500 text-sm mb-4">Bulk pricing available per kilogram</p>
+                        <div className="h-1.5 w-20 bg-green-600 rounded-full"></div>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                        {products.filter(p => p.id.startsWith('loose-')).map((product) => (
+                            <ProductCardItem key={product.id} product={product} handleAddToCart={handleAddToCart} />
+                        ))}
+                    </div>
+                </div>
 
-                                    {/* Footer */}
-                                    <div className="flex items-center justify-between pt-6 border-t border-gray-100 mt-auto">
-                                        <div>
-                                            <span className="block text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Fixed Price</span>
-                                            <span className="text-2xl font-black text-gray-900">{product.price}</span>
-                                        </div>
-                                        <button
-                                            onClick={(e) => handleAddToCart(e, product)}
-                                            className="bg-orange-500 hover:bg-orange-600 text-white p-4 rounded-2xl shadow-lg shadow-orange-500/20 transition-all hover:scale-110 active:scale-95 group/btn"
-                                        >
-                                            <ShoppingBag className="w-5 h-5 group-hover/btn:rotate-12 transition-transform" />
-                                        </button>
-                                    </div>
-                                </div>
-                            </Link>
-                        </div>
-                    ))}
+                {/* Commercial Section */}
+                <div className="mb-8">
+                    <div className="flex flex-col items-center mb-10">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-2">Branded Packets</h2>
+                        <div className="h-1.5 w-20 bg-orange-500 rounded-full"></div>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                        {products.filter(p => p.id.startsWith('packet-')).map((product) => (
+                            <ProductCardItem key={product.id} product={product} handleAddToCart={handleAddToCart} />
+                        ))}
+                    </div>
                 </div>
             </main>
 
             <footer className="relative z-10 bg-white border-t border-gray-100 py-12 px-4 text-center">
-                <p className="text-gray-400 text-sm font-medium">© 2024 Genus Agro Foods. All rights reserved.</p>
+                <p className="text-gray-400 text-sm font-medium">© 2026 Genus Agro Foods. All rights reserved.</p>
             </footer>
         </div>
     );
 };
+
+const ProductCardItem = ({ product, handleAddToCart }: { product: any, handleAddToCart: any }) => (
+    <div className="group relative">
+        <Link to={`/product/${product.id}`} className="block h-full">
+            <div className="bg-white rounded-[2.5rem] border border-gray-100 p-6 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(234,88,12,0.15)] flex flex-col h-full bg-gradient-to-b from-white to-orange-50/20">
+                {/* Image Container */}
+                <div className="relative aspect-square rounded-[2rem] overflow-hidden mb-8 bg-gray-50 group-hover:bg-white transition-colors duration-500 shadow-inner">
+                    <img
+                        src={product.image}
+                        alt={product.title}
+                        className="w-full h-full object-contain p-8 transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute top-4 left-4 flex flex-col gap-2">
+                        <div className="bg-white/90 backdrop-blur-md text-orange-600 text-[10px] font-black px-3 py-1.5 rounded-full shadow-sm border border-orange-100 flex items-center gap-1">
+                            <Star className="w-3 h-3 fill-current" />
+                            BEST SELLER
+                        </div>
+                    </div>
+                    <div className="absolute top-4 right-4 animate-bounce-slow">
+                        <div className="bg-green-600 text-white text-[10px] font-black px-3 py-1.5 rounded-full shadow-lg text-center">
+                            {product.grade}
+                        </div>
+                    </div>
+                </div>
+
+                {/* Content */}
+                <div className="flex-grow">
+                    <div className="text-orange-600 text-[10px] font-black uppercase tracking-widest mb-2 px-1">
+                        {product.subtitle}
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-900 leading-tight mb-3 px-1 group-hover:text-orange-600 transition-colors">
+                        {product.title}
+                    </h3>
+                    <p className="text-gray-500 text-sm leading-relaxed mb-8 px-1">
+                        {product.description}
+                    </p>
+                </div>
+
+                {/* Footer */}
+                <div className="flex items-center justify-between pt-6 border-t border-gray-100 mt-auto">
+                    <div>
+                        <span className="block text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Fixed Price</span>
+                        <span className="text-2xl font-black text-gray-900">{product.price}</span>
+                    </div>
+                    <button
+                        onClick={(e) => handleAddToCart(e, product)}
+                        className="bg-orange-500 hover:bg-orange-600 text-white p-4 rounded-2xl shadow-lg shadow-orange-500/20 transition-all hover:scale-110 active:scale-95 group/btn"
+                    >
+                        <ShoppingBag className="w-5 h-5 group-hover/btn:rotate-12 transition-transform" />
+                    </button>
+                </div>
+            </div>
+        </Link>
+    </div>
+);
 
 export default MakhanaListing;
