@@ -166,9 +166,16 @@ const ProductDetail = () => {
                                 <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                                     <div>
                                         <span className="block text-xs md:text-sm text-gray-600 font-medium mb-1">Price per Unit</span>
-                                        <span className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">
-                                            {product.price}
-                                        </span>
+                                        <div className="flex items-center gap-3">
+                                            <span className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">
+                                                {product.price}
+                                            </span>
+                                            {product.originalPrice && (
+                                                <span className="text-lg md:text-xl text-gray-400 line-through font-medium">
+                                                    {product.originalPrice}
+                                                </span>
+                                            )}
+                                        </div>
                                     </div>
 
                                     <div className="flex flex-col gap-1">

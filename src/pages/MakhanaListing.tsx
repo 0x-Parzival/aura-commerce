@@ -181,8 +181,20 @@ const ProductCardItem = ({ product, handleAddToCart }: { product: any, handleAdd
                 {/* Footer */}
                 <div className="flex items-center justify-between pt-6 border-t border-gray-100 mt-auto">
                     <div>
-                        <span className="block text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Fixed Price</span>
-                        <span className="text-2xl font-black text-gray-900">{product.price}</span>
+                        {product.originalPrice ? (
+                            <>
+                                <span className="block text-[10px] font-bold text-orange-600 uppercase tracking-tighter">Discounted Price</span>
+                                <div className="flex items-center gap-2">
+                                    <span className="text-2xl font-black text-gray-900">{product.price}</span>
+                                    <span className="text-sm text-gray-400 line-through font-medium">{product.originalPrice}</span>
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <span className="block text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Fixed Price</span>
+                                <span className="text-2xl font-black text-gray-900">{product.price}</span>
+                            </>
+                        )}
                     </div>
                     <button
                         onClick={(e) => handleAddToCart(e, product)}

@@ -12,18 +12,20 @@ export interface Product {
   bannerImage: string;
   secondaryImage?: string;
   weightInGrams: number;
+  originalPrice?: string;
 }
 
 export const products: Product[] = [
   {
     id: "green-premium",
-    title: "Premium AA Green Packet",
+    title: "Premium AA Grade Packet",
     subtitle: "Retail Exclusive",
     grade: "5A+ Size (22mm+)",
     image: "/assets/products/makhana-aa-real.jpg",
     secondaryImage: "/assets/products/green-back-portrait.png",
     description: "Our signature retail green packet. Hand-picked AA Grade Makhana, extra-large and snow-white. The pinnacle of quality, perfectly crisp and nutritious.",
-    price: "₹600",
+    price: "₹500",
+    originalPrice: "₹600",
     features: ["250gm Pack", "Premium Green Packaging", "Farm Fresh", "Pesticide Free"],
     nutritionalInfo: [
       { label: "Protein", value: "9.7g" },
@@ -37,12 +39,13 @@ export const products: Product[] = [
   },
   {
     id: "green-standard",
-    title: "Standard A Green Packet",
+    title: "Premium A Grade Packet",
     subtitle: "Everyday Wellness",
     grade: "4A Size (19mm+)",
     image: "/assets/products/makhana-a.jpg",
     description: "Our standard retail green packet. Perfect balance of quality and value. Crisp, light, and naturally delicious fox nuts for daily healthy snacking.",
-    price: "₹500",
+    price: "₹400",
+    originalPrice: "₹500",
     features: ["250gm Pack", "Standard Green Packaging", "Natural Taste", "Rich in Calcium"],
     nutritionalInfo: [
       { label: "Protein", value: "9.7g" },
