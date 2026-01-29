@@ -38,34 +38,6 @@ ${formData.message}`
         window.location.href = mailtoLink;
     };
 
-    // Reusing the simple text inputs but styled for glassmorphism
-    const InputField = ({ name, placeholder, type = "text", rows }: { name: string, placeholder: string, type?: string, rows?: number }) => (
-        <div className="relative group">
-            {rows ? (
-                <textarea
-                    name={name}
-                    rows={rows}
-                    placeholder={placeholder}
-                    value={(formData as any)[name]}
-                    onChange={handleInputChange}
-                    className="w-full bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 py-3 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:bg-white/40 transition-all resize-none"
-                    required
-                />
-            ) : (
-                <input
-                    name={name}
-                    type={type}
-                    placeholder={placeholder}
-                    value={(formData as any)[name]}
-                    onChange={handleInputChange}
-                    className="w-full bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 py-3 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:bg-white/40 transition-all"
-                    required
-                />
-            )}
-            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-400/20 to-green-400/20 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-500" />
-        </div>
-    );
-
     return (
         <div className="min-h-screen bg-gray-50 font-sans text-gray-900 overflow-x-hidden relative">
             {/* Background */}
@@ -171,11 +143,33 @@ ${formData.message}`
                             <h2 className="text-3xl font-bold text-gray-900 mb-8">Send us a message</h2>
                             <form className="space-y-6" onSubmit={handleSubmit}>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <InputField name="name" placeholder="Your Name" />
-                                    <InputField name="email" placeholder="Email Address" type="email" />
+                                    <InputField
+                                        name="name"
+                                        placeholder="Your Name"
+                                        value={formData.name}
+                                        onChange={handleInputChange}
+                                    />
+                                    <InputField
+                                        name="email"
+                                        placeholder="Email Address"
+                                        type="email"
+                                        value={formData.email}
+                                        onChange={handleInputChange}
+                                    />
                                 </div>
-                                <InputField name="subject" placeholder="Subject" />
-                                <InputField name="message" placeholder="Message" rows={4} />
+                                <InputField
+                                    name="subject"
+                                    placeholder="Subject"
+                                    value={formData.subject}
+                                    onChange={handleInputChange}
+                                />
+                                <InputField
+                                    name="message"
+                                    placeholder="Message"
+                                    rows={4}
+                                    value={formData.message}
+                                    onChange={handleInputChange}
+                                />
 
                                 <button
                                     className={cn(
@@ -224,5 +218,47 @@ ${formData.message}`
         </div>
     );
 };
+
+// Reusing the simple text inputs but styled for glassmorphism
+const InputField = ({
+    name,
+    placeholder,
+    type = "text",
+    rows,
+    value,
+    onChange
+}: {
+    name: string,
+    placeholder: string,
+    type?: string,
+    rows?: number,
+    value: string,
+    onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
+}) => (
+    <div className="relative group">
+        {rows ? (
+            <textarea
+                name={name}
+                rows={rows}
+                placeholder={placeholder}
+                value={value}
+                onChange={onChange}
+                className="w-full bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 py-3 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:bg-white/40 transition-all resize-none"
+                required
+            />
+        ) : (
+            <input
+                name={name}
+                type={type}
+                placeholder={placeholder}
+                value={value}
+                onChange={onChange}
+                className="w-full bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 py-3 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:bg-white/40 transition-all"
+                required
+            />
+        )}
+        <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-400/20 to-green-400/20 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-500" />
+    </div>
+);
 
 export default ContactUs;
