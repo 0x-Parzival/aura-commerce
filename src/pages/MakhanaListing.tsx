@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Leaf, ShieldCheck, Heart, ShoppingBag, Star, ShoppingCart, ArrowLeft } from 'lucide-react';
-import { products } from '../data/products';
+import { inferSection, useMakhanaProducts, useMakhanaSettings } from '@/data/makhanaStore';
 import { cn } from "@/lib/utils";
 import { useCart } from '../context/CartContext';
 import { toast } from "sonner";
 
 const MakhanaListing = () => {
     const { addToCart, setIsCartOpen, totalItems } = useCart();
+    const { items: products } = useMakhanaProducts();
+    const { settings } = useMakhanaSettings();
 
     const handleAddToCart = (e: React.MouseEvent, product: any) => {
         e.preventDefault();
@@ -57,6 +59,7 @@ const MakhanaListing = () => {
                         <div className="hidden sm:flex items-center gap-6 text-sm font-medium text-gray-600">
                             <Link to="/" className="hover:text-orange-600 transition-colors">Home</Link>
                             <Link to="/contact" className="hover:text-orange-600 transition-colors">Contact</Link>
+                            <Link to="/admin" className="hover:text-orange-600 transition-colors">Admin</Link>
                         </div>
                     </div>
                 </div>
@@ -66,14 +69,14 @@ const MakhanaListing = () => {
             <section className="relative z-10 pt-12 pb-16 px-4 md:px-8 text-center max-w-4xl mx-auto">
                 <div className="inline-flex items-center gap-2 bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full border border-orange-100 mb-6 shadow-sm">
                     <Leaf className="w-4 h-4 text-green-600" />
-                    <span className="text-xs font-bold text-orange-800 uppercase tracking-widest">Premium Quality Makhana</span>
+                    <span className="text-xs font-bold text-orange-800 uppercase tracking-widest">{settings.heroBadge}</span>
                 </div>
                 <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-                    Pure Crunchiness <br />
-                    <span className="bg-gradient-to-r from-orange-500 to-green-600 bg-clip-text text-transparent">Perfected.</span>
+                    {settings.heroTitleLine1} <br />
+                    <span className="bg-gradient-to-r from-orange-500 to-green-600 bg-clip-text text-transparent">{settings.heroTitleLine2}</span>
                 </h1>
                 <p className="text-lg md:text-xl text-gray-600 mb-10 leading-relaxed">
-                    Experience Bihar's finest GI-tagged Makhana. Naturally grown, ethically harvested, and packed with health benefits in every single bite.
+                    {settings.heroDescription}
                 </p>
 
                 {/* Trust Badges */}
@@ -96,11 +99,11 @@ const MakhanaListing = () => {
                 {/* Retail Section */}
                 <div className="mb-20">
                     <div className="flex flex-col items-center mb-10">
-                        <h2 className="text-3xl font-bold text-gray-900 mb-2">Retail Green Packets</h2>
+                        <h2 className="text-3xl font-bold text-gray-900 mb-2">{settings.retailTitle}</h2>
                         <div className="h-1.5 w-20 bg-orange-500 rounded-full"></div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-                        {products.filter(p => p.id.startsWith('green-')).map((product) => (
+                        {products.filter((p) => inferSection(p) === 'green').map((product) => (
                             <ProductCardItem key={product.id} product={product} handleAddToCart={handleAddToCart} />
                         ))}
                     </div>
@@ -109,12 +112,12 @@ const MakhanaListing = () => {
                 {/* Loose Section */}
                 <div className="mb-20">
                     <div className="flex flex-col items-center mb-10">
-                        <h2 className="text-3xl font-bold text-gray-900 mb-2">Loose Makhana (Wholesale)</h2>
-                        <p className="text-gray-500 text-sm mb-4">Bulk pricing available per kilogram</p>
+                        <h2 className="text-3xl font-bold text-gray-900 mb-2">{settings.looseTitle}</h2>
+                        <p className="text-gray-500 text-sm mb-4">{settings.looseCaption}</p>
                         <div className="h-1.5 w-20 bg-green-600 rounded-full"></div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-                        {products.filter(p => p.id.startsWith('loose-')).map((product) => (
+                        {products.filter((p) => inferSection(p) === 'loose').map((product) => (
                             <ProductCardItem key={product.id} product={product} handleAddToCart={handleAddToCart} />
                         ))}
                     </div>
@@ -123,11 +126,11 @@ const MakhanaListing = () => {
                 {/* Commercial Section */}
                 <div className="mb-8">
                     <div className="flex flex-col items-center mb-10">
-                        <h2 className="text-3xl font-bold text-gray-900 mb-2">Branded Packets</h2>
+                        <h2 className="text-3xl font-bold text-gray-900 mb-2">{settings.packetTitle}</h2>
                         <div className="h-1.5 w-20 bg-orange-500 rounded-full"></div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-                        {products.filter(p => p.id.startsWith('packet-')).map((product) => (
+                        {products.filter((p) => inferSection(p) === 'packet').map((product) => (
                             <ProductCardItem key={product.id} product={product} handleAddToCart={handleAddToCart} />
                         ))}
                     </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { products } from '../data/products';
+import { useMakhanaProducts } from '@/data/makhanaStore';
 import { ChevronRight, Star, ShoppingBag, Truck, Shield, Award, Plus, Minus, ShoppingCart, ArrowLeft } from 'lucide-react';
 import { cn } from "@/lib/utils";
 import OrderModal from '../components/OrderModal';
@@ -11,6 +11,7 @@ const SLIDE_COUNT = 12;
 
 const ProductDetail = () => {
     const { id } = useParams<{ id: string }>();
+    const { items: products } = useMakhanaProducts();
     const product = products.find(p => p.id === id);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);

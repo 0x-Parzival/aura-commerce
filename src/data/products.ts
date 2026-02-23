@@ -12,6 +12,7 @@ export interface Product {
   bannerImage: string;
   secondaryImage?: string;
   weightInGrams: number;
+  section?: 'green' | 'loose' | 'packet';
 }
 
 export const products: Product[] = [

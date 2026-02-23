@@ -6,6 +6,7 @@ import GlassCard from "./components/GlassCard";
 import MakhanaListing from "./pages/MakhanaListing";
 import ProductDetail from "./pages/ProductDetail";
 import ContactUs from "./pages/ContactUs";
+import AdminPage from "./pages/AdminPage";
 import { CartProvider, useCart } from "./context/CartContext";
 import { useState } from "react";
 import CartDrawer from "./components/CartDrawer";
@@ -105,6 +106,7 @@ const App = () => (
             <Route path="/makhana" element={<MakhanaListing />} />
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/contact" element={<ContactUs />} />
+            <Route path="/admin" element={<AdminPage />} />
           </Routes>
         </BrowserRouter>
       </CartProvider>
