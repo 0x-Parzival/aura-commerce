@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Leaf, ShieldCheck, Heart, ShoppingBag, Star, ShoppingCart, ArrowLeft } from 'lucide-react';
 import { inferSection, useMakhanaProducts, useMakhanaSettings } from '@/data/makhanaStore';
+import { Product } from '@/data/products';
 import { cn } from "@/lib/utils";
 import { useCart } from '../context/CartContext';
 import { toast } from "sonner";
@@ -11,7 +12,7 @@ const MakhanaListing = () => {
     const { items: products } = useMakhanaProducts();
     const { settings } = useMakhanaSettings();
 
-    const handleAddToCart = (e: React.MouseEvent, product: any) => {
+    const handleAddToCart = (e: React.MouseEvent, product: Product) => {
         e.preventDefault();
         e.stopPropagation();
         addToCart({
@@ -144,7 +145,7 @@ const MakhanaListing = () => {
     );
 };
 
-const ProductCardItem = ({ product, handleAddToCart }: { product: any, handleAddToCart: any }) => (
+const ProductCardItem = ({ product, handleAddToCart }: { product: Product, handleAddToCart: (e: React.MouseEvent, product: Product) => void }) => (
     <div className="group relative">
         <Link to={`/product/${product.id}`} className="block h-full">
             <div className="bg-white rounded-[2.5rem] border border-gray-100 p-6 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(234,88,12,0.15)] flex flex-col h-full bg-gradient-to-b from-white to-orange-50/20">

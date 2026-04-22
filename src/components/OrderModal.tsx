@@ -25,12 +25,22 @@ interface LocationData {
     fullAddress: string;
 }
 
+interface OrderInfo {
+    orderId: string;
+    items: OrderItem[];
+    customer: {
+        name: string;
+        phone: string;
+        address: string;
+    };
+}
+
 const OrderModal = ({ isOpen, onClose, items }: OrderModalProps) => {
     const [loading, setLoading] = useState(false);
     const [locationError, setLocationError] = useState('');
     const [locationData, setLocationData] = useState<LocationData | null>(null);
     const [showPayment, setShowPayment] = useState(false);
-    const [orderData, setOrderData] = useState<any>(null);
+    const [orderData, setOrderData] = useState<OrderInfo | null>(null);
 
     const [formData, setFormData] = useState({
         name: '',

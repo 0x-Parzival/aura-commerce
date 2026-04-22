@@ -46,7 +46,7 @@ ${formData.message}`
                     name={name}
                     rows={rows}
                     placeholder={placeholder}
-                    value={(formData as any)[name]}
+                    value={formData[name as keyof typeof formData]}
                     onChange={handleInputChange}
                     className="w-full bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 py-3 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:bg-white/40 transition-all resize-none"
                     required
@@ -56,7 +56,7 @@ ${formData.message}`
                     name={name}
                     type={type}
                     placeholder={placeholder}
-                    value={(formData as any)[name]}
+                    value={formData[name as keyof typeof formData]}
                     onChange={handleInputChange}
                     className="w-full bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-4 py-3 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:bg-white/40 transition-all"
                     required

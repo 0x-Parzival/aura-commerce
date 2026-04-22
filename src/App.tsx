@@ -6,6 +6,7 @@ import GlassCard from "./components/GlassCard";
 import MakhanaListing from "./pages/MakhanaListing";
 import ProductDetail from "./pages/ProductDetail";
 import ContactUs from "./pages/ContactUs";
+import AboutUs from "./pages/AboutUs";
 import AdminPage from "./pages/AdminPage";
 import { CartProvider, useCart } from "./context/CartContext";
 import { useState } from "react";
@@ -15,6 +16,7 @@ import { ShoppingCart } from "lucide-react";
 const queryClient = new QueryClient();
 
 const Home = () => {
+  const { setIsCartOpen, totalItems } = useCart();
   return (
     <div className="relative w-full h-screen overflow-hidden bg-gray-100 font-sans text-gray-900">
       {/* Background Image - Makhana Field */}
@@ -45,6 +47,22 @@ const Home = () => {
             </div>
           </div>
           <div className="flex items-center gap-2 md:gap-3">
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="relative p-2 text-gray-800 hover:text-orange-600 transition-colors bg-white/30 backdrop-blur-md rounded-lg border border-white/50"
+            >
+              <ShoppingCart className="w-5 h-5 md:w-6 h-6" />
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                  {totalItems}
+                </span>
+              )}
+            </button>
+            <Link to="/about">
+              <div className="text-gray-800 font-bold hover:text-white cursor-pointer transition-all duration-300 bg-white/30 px-3 md:px-6 py-2 md:py-3 rounded-lg md:rounded-xl backdrop-blur-md border border-white/50 hover:bg-green-600 hover:border-green-600 shadow-sm text-xs md:text-base whitespace-nowrap">
+                About Us
+              </div>
+            </Link>
             <Link to="/contact">
               <div className="text-gray-800 font-bold hover:text-white cursor-pointer transition-all duration-300 bg-white/30 px-3 md:px-6 py-2 md:py-3 rounded-lg md:rounded-xl backdrop-blur-md border border-white/50 hover:bg-orange-500 hover:border-orange-500 shadow-sm text-xs md:text-base whitespace-nowrap">
                 Contact
@@ -106,6 +124,7 @@ const App = () => (
             <Route path="/makhana" element={<MakhanaListing />} />
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/contact" element={<ContactUs />} />
+            <Route path="/about" element={<AboutUs />} />
             <Route path="/admin" element={<AdminPage />} />
           </Routes>
         </BrowserRouter>
